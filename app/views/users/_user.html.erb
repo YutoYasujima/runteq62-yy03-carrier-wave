@@ -1,0 +1,16 @@
+<div id="<%= dom_id user %>" class="my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= user.name %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Age:</strong>
+    <%= user.age %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Avatar:</strong>
+    <% if user.avatar? %>
+      <%= image_tag user.avatar_url, class: "text-gray-700 underline hover:no-underline", width: "300", height:"200" %>
+    <% end %>
+  </div>
+</div>
