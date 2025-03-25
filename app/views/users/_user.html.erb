@@ -10,7 +10,8 @@
   <div>
     <strong class="block font-medium mb-1">Avatar:</strong>
     <% if user.avatar? %>
-      <%= image_tag user.avatar_url, class: "text-gray-700 underline hover:no-underline", width: "300", height:"200" %>
+      <%= image_tag(user.avatar_url, class: "text-gray-700 underline hover:no-underline", width: "300", height:"200") if user.avatar? %>
+      <%= image_tag(user.avatar.thumb.url, class: "text-gray-700 underline hover:no-underline", width: "50", height:"50") if user.avatar? %>
     <% end %>
   </div>
 </div>
