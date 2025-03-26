@@ -56,7 +56,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "something.jpg"
   # end
 
+  # 画像のByteサイズ範囲設定
   def size_range
     1.byte..5.megabytes
+  end
+
+  # デフォルト画像設定
+  def default_url(*args)
+    "default.png"
+    # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+    # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   end
 end
