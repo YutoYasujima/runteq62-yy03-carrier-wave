@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy image_delete ]
 
   # GET /users or /users.json
   def index
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: "User was successfully created." }
@@ -38,12 +37,23 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        # ストレージにあるアップロードした画像を消す
+        # @user.remove_avatar! if params[:user][:remove_avatar] == "1"
         format.html { redirect_to @user, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def image_delete
+    @user.remove_avatar!
+    if @user.save
+      redirect_to edit_user_path(@user), notice: "User was successfully image delete."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
