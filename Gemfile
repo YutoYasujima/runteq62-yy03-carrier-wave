@@ -63,5 +63,5 @@ end
 gem "tailwindcss-rails", "~> 4.1"
 gem "carrierwave", "~> 3.0"
 gem "mini_magick"
-gem 'dotenv-rails'
-gem 'fog-aws'
+gem "dotenv-rails"
+gem "fog-aws"
