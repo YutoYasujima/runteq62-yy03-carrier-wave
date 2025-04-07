@@ -60,7 +60,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "tailwindcss-rails", "~> 4.1"
+gem "tailwindcss-rails", "~> 4.2"
 gem "carrierwave", "~> 3.0"
 gem "mini_magick"
 gem "dotenv-rails"
